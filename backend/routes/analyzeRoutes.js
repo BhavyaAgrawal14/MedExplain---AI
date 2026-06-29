@@ -1,8 +1,14 @@
-const express = require('express');
+import express from "express";
+import upload from "../middleware/uploadMiddleware.js";
+
 const router = express.Router();
-const upload = require('../middleware/upload');
-const { analyzeReport } = require('../controllers/analyzeController');
 
-router.post('/analyze', upload.single('report'), analyzeReport);
+import { analyzeReport } from "../controllers/analyzeController.js";
 
-module.exports = router;
+router.post(
+  "/analyze",
+  upload.single("report"),
+  analyzeReport
+);
+
+export default router;

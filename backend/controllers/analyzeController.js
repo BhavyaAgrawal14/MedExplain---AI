@@ -1,20 +1,14 @@
-const analyzeReport = (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({
+import { analyzeMedicalReport } from "../services/analyzeService.js";
+
+export const analyzeReport = async (req, res) => {
+  try {
+    const result = await analyzeMedicalReport(req.file);
+
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({
       success: false,
-      message: "No file uploaded"
+      message: error.message,
     });
   }
-
-  return res.status(200).json({
-    success: true,
-    filename: req.file.filename,
-    mimetype: req.file.mimetype,
-    size: req.file.size.toString(),
-    message: "File uploaded successfully"
-  });
-};
-
-module.exports = {
-  analyzeReport
 };

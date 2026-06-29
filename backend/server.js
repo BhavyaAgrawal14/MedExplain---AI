@@ -1,17 +1,21 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import analyzeRoutes from "./routes/analyzeRoutes.js";
+
+dotenv.config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-const analyzeRoutes = require("./routes/analyzeRoutes");
 app.use("/api", analyzeRoutes);
 
 app.get("/", (req, res) => {
-  res.send("🚀 MedExplain AI Backend is Running");
+  res.json({
+    success: true,
+    message: "MedExplain AI Backend is running 🚀",
+  });
 });
 
 const PORT = process.env.PORT || 5000;
