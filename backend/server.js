@@ -7,6 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const analyzeRoutes = require("./routes/analyzeRoutes");
+app.use("/api", analyzeRoutes);
+
 app.get("/", (req, res) => {
   res.send("🚀 MedExplain AI Backend is Running");
 });
