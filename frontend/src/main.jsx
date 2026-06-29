@@ -5,10 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 
+import { Toaster } from "react-hot-toast";
+
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <App />
+      <Toaster position="top-right" />
     </BrowserRouter>
   </StrictMode>
 );

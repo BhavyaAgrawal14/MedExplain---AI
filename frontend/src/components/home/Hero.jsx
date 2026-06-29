@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { analyzeReport } from "../../api/reportApi";
 import {
   Sparkles,
@@ -9,35 +10,48 @@ import {
   Activity,
   Loader2,
 } from "lucide-react";
+import toast from "react-hot-toast";
 
 const Hero = () => {
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("idle");
 
   const handleFileChange = async (e) => {
-  const file = e.target.files?.[0];
+    const file = e.target.files?.[0];
 
-  if (!file) return;
+    if (!file) return;
 
-  setSelectedFile(file);
-  setUploadStatus("analyzing");
+    setSelectedFile(file);
+    setUploadStatus("analyzing");
 
-  try {
-    const formData = new FormData();
-    formData.append("report", file);
+    try {
+      const formData = new FormData();
+      formData.append("report", file);
 
-    const result = await analyzeReport(formData);
+      const result = await analyzeReport(formData);
+      if (!result.success) {
+        toast.error(result.message);
+        setUploadStatus("idle");
+        return;
+      }
+      toast.success("Report analyzed successfully!");
 
-    console.log(result);
+      // Save analysis locally
+      localStorage.setItem("analysis", JSON.stringify(result.analysis));
 
-    setUploadStatus("completed");
-  } catch (error) {
-    console.error(error);
-    setUploadStatus("idle");
-    alert("Failed to analyze report.");
-  }
-};
+      navigate("/dashboard", {
+        state: {
+          analysis: result.analysis,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      setUploadStatus("idle");
+      toast.error("Upload failed.");
+    }
+  };
 
   return (
     <section className="relative w-full overflow-hidden bg-slate-50 pt-20 pb-24 lg:pt-32 lg:pb-40">
@@ -74,13 +88,28 @@ const Hero = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button
-                onClick={() => fileInputRef.current.click()}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <UploadCloud className="w-5 h-5" />
-                Upload Report
-              </button>
+             <button
+  onClick={() => fileInputRef.current.click()}
+  disabled={uploadStatus === "analyzing"}
+  className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all shadow-lg
+    ${
+      uploadStatus === "analyzing"
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-0.5 active:translate-y-0"
+    }`}
+>
+  {uploadStatus === "analyzing" ? (
+    <>
+      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      Analyzing...
+    </>
+  ) : (
+    <>
+      <UploadCloud className="w-5 h-5" />
+      Upload Report
+    </>
+  )}
+</button>
               <button className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0">
                 <FileText className="w-5 h-5 text-slate-400" />
                 View Sample Analysis
