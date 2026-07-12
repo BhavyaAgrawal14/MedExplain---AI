@@ -93,23 +93,17 @@ MedExplain---AI
 
 ### Home Page
 
-> Add screenshot here
-
 ![Home](screenshots/home.png)
 
 ---
 
 ### Upload & Analysis
 
-> Add screenshot here
-
 ![Upload](screenshots/upload.png)
 
 ---
 
 ### Dashboard
-
-> Add screenshot here
 
 ![Dashboard](screenshots/dashboard.png)
 
