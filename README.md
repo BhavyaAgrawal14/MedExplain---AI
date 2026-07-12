@@ -109,6 +109,24 @@ MedExplain---AI
 
 ---
 
+### 📄 PDF Report
+
+![PDF Report](./screenshots/pdf-report.png)
+
+---
+
+### 🌙 Dark Mode
+
+![Dark Mode](./screenshots/dark-mode.png)
+
+---
+
+### ⚖️ Privacy Policy & Medical Disclaimer
+
+![Legal Page](./screenshots/legal.png)
+
+---
+
 ## 🚀 Installation
 
 ### Clone Repository
