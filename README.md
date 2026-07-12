@@ -18,20 +18,24 @@ The application combines OCR, PDF parsing, and Large Language Models (LLMs) to s
 
 ## ✨ Features
 
-- 📄 Upload medical reports in **PDF** or **image** format
+- 📄 Upload medical reports in **PDF, PNG, JPG, or JPEG** format
 - 🔍 OCR support for scanned reports
-- 📑 PDF text extraction
-- 🤖 AI-powered report analysis using **Groq LLM**
-- ❤️ Health Score
-- 🟢 Risk Level Assessment
+- 📑 Automatic PDF text extraction
+- 🤖 AI-powered medical report analysis using **Groq Llama 3.3 70B**
+- ❤️ AI-generated Health Score
+- 🛡️ Risk Level & Severity Assessment
 - 📋 Simplified Medical Summary
-- ⚠️ Abnormal Test Value Detection
-- 💡 Personalized Recommendations
+- ⚠️ Abnormal Test Value Detection with explanations
+- ✅ Positive Health Findings
+- 💡 Personalized Health Recommendations
 - 🥗 Diet Suggestions
 - 🏃 Exercise Suggestions
 - 📅 Follow-up Recommendations
-- 🚫 Detects non-medical uploads
-- 📱 Fully responsive UI
+- 📥 Download AI analysis as a professionally formatted PDF
+- 🌙 Light & Dark Mode support
+- 📱 Fully responsive modern UI
+- ⚖️ Privacy Policy & Medical Disclaimer page
+- 🚫 Automatic detection of non-medical reports
 
 ---
 
@@ -42,10 +46,13 @@ The application combines OCR, PDF parsing, and Large Language Models (LLMs) to s
 - React
 - Vite
 - Tailwind CSS
-- React Router
+- React Router DOM
 - Axios
 - React Hot Toast
 - Lucide React
+- React Icons
+- jsPDF
+- jsPDF AutoTable
 
 ### Backend
 
@@ -91,25 +98,25 @@ MedExplain---AI
 
 ## 📸 Screenshots
 
-### Home Page
+### 🏠 Home Page
 
-![Home](screenshots/home.png)
-
----
-
-### Upload & Analysis
-
-![Upload](screenshots/upload.png)
+![Home](./screenshots/home.png)
 
 ---
 
-### Dashboard
+### 📤 Upload & Analysis
 
-![Dashboard](screenshots/dashboard.png)
+![Upload](./screenshots/upload.png)
 
 ---
 
-### 📄 PDF Report
+### 📊 Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+---
+
+### 📄 Downloadable PDF Report
 
 ![PDF Report](./screenshots/pdf-report.png)
 
@@ -187,25 +194,24 @@ npm run dev
 
 ## 🌍 Live Demo
 
-Frontend
-
+**Frontend:**  
 https://med-explain-ai-ashy.vercel.app/
 
-Backend
-
+**Backend API:**  
 https://medexplain-ai-backend.onrender.com
 
 ---
 
 ## 🔮 Future Improvements
 
-- Authentication
-- Medical Report History
-- Multi-language Support
-- Download AI Analysis as PDF
-- Dark Mode
-- Doctor Question Generator
-- Medical Trend Tracking
+- 🔐 User Authentication
+- 📂 Medical Report History
+- 💬 AI Chat Assistant ("Ask AI About This Report")
+- 🌍 Multi-language Report Explanations
+- 📈 Health Trend Tracking
+- 👨‍⚕️ Doctor Question Generator
+- 📤 Share Reports via Email
+- 📱 Progressive Web App (PWA) Support
 
 ---
 
@@ -217,15 +223,29 @@ The AI-generated analysis should **not** be considered medical advice. Always co
 
 ---
 
+## 🧠 How It Works
+
+1. Upload a medical report (PDF or image).
+2. OCR and PDF parsing extract the report contents.
+3. Groq Llama 3.3 70B analyzes the extracted medical data.
+4. MedExplain AI generates:
+   - Health Score
+   - Risk Assessment
+   - Simplified Summary
+   - Abnormal Findings
+   - Recommendations
+   - Diet & Exercise Suggestions
+   - Follow-up Advice
+5. Download the complete AI-generated report as a PDF.
+
+---
+
 ## 👨‍💻 Author
 
 **Bhavya Agrawal**
 
-GitHub:
-https://github.com/BhavyaAgrawal14
-
-LinkedIn:
-(Add your LinkedIn profile)
+- GitHub: https://github.com/BhavyaAgrawal14
+- LinkedIn: https://www.linkedin.com/in/bhavya-agrawal-460621341/
 
 ---
 
