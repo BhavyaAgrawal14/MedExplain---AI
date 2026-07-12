@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import socialLinks from "../../constants/socialLinks";
 import logo from "../../assets/logo.svg";
 import { theme } from "../../constants/theme";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -103,22 +104,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a
-                  href="/legal"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-3 group"
-                >
-                  <span className="w-2 h-2 rounded-full bg-blue-500 group-hover:bg-blue-600 transition-colors" />
-                  Privacy Policy
-                </a>
+                <Link
+  to="/legal"
+  className="text-slate-600 dark:text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-3 group"
+>
+  <span className="w-2 h-2 rounded-full bg-blue-500 group-hover:bg-blue-600 transition-colors" />
+  Privacy Policy
+</Link>
               </li>
               <li>
-                <a
-                  href="/legal"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-3 group"
-                >
-                  <span className= "w-2 h-2 rounded-full bg-blue-500 group-hover:bg-blue-600 transition-colors" />
-                  Disclaimer
-                </a>
+                <Link
+  to="/legal"
+  className="text-slate-600 dark:text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-3 group"
+>
+  <span className="w-2 h-2 rounded-full bg-blue-500 group-hover:bg-blue-600 transition-colors" />
+  Disclaimer
+</Link>
               </li>
             </ul>
           </div>
