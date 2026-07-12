@@ -6,13 +6,15 @@ import "./index.css";
 import App from "./App";
 
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "./context/ThemeContext";
 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-      <Toaster position="top-right" />
-    </BrowserRouter>
+    <ThemeProvider>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+</ThemeProvider>
   </StrictMode>
 );
